@@ -3,6 +3,8 @@
 @attribute [StreamRendering(true)] 
 @rendermode InteractiveServer
 
+@*Built in component*@
+<PageTitle>@Title</PageTitle>
 <h1>Employee Overview</h1>
 
 @if (Employees == null) {
@@ -14,8 +16,17 @@ else {
         @foreach(var employee in Employees)
         {
             <div class="col-6 col-lg-4 col-xl-3 col-xxl-3">
-                <EmployeeCard Employee="employee"
-                    EmployeeQuickViewClicked="ShowQuickViewPopup"></EmployeeCard>
+                <ErrorBoundary>
+                    <ChildContent>
+                        <EmployeeCard Employee="employee"
+                                      EmployeeQuickViewClicked="ShowQuickViewPopup"></EmployeeCard>
+                    </ChildContent>
+                    <ErrorContent>
+                        <p class="errorUI">There is an invalid employee in the dataset.</p>
+                    </ErrorContent>
+                </ErrorBoundary>
+                @* <EmployeeCard Employee="employee" *@
+                @*     EmployeeQuickViewClicked="ShowQuickViewPopup"></EmployeeCard> *@
             </div>
         }
     </div>

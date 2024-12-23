@@ -9,6 +9,7 @@ namespace JoesPieShopHRM.Components.Pages
         private Employee? _selectedEmployee;
         //initialize
         //public List<Employee> Employees { get; set; } = new List<Employee>();
+        private string Title = "Employee Overview";
         protected async override Task OnInitializedAsync()
         {
             await Task.Delay(2000);

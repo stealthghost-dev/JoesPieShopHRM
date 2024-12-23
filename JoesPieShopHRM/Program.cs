@@ -1,10 +1,18 @@
 using JoesPieShopHRM.Components;
+using JoesPieShopHRM.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents(); // for interactive components
+
+//builder.Services.AddDbContext<AppDbContext>(options =>
+  //  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContextFactory<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -25,3 +33,14 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode(); // for interactive components
 
 app.Run();
+
+//Steps to Add EF Core services
+//Define model
+//Add Required Packages
+//Create DBContext
+//Configure the application to use EF Core
+
+//Create the database -     
+//add-migration initialCreate
+//update-database
+//add-migration dataAdded
