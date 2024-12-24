@@ -1,4 +1,4 @@
-﻿using JoesPieShopHRM.Components.Services;
+﻿using JoesPieShopHRM.Services;
 
 
 namespace JoesPieShopHRM.Components.Widgets

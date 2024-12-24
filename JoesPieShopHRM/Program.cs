@@ -1,5 +1,10 @@
 using JoesPieShopHRM.Components;
+using JoesPieShopHRM.Contracts.Repositories;
+using JoesPieShopHRM.Contracts.Services;
 using JoesPieShopHRM.Data;
+using JoesPieShopHRM.Repositories;
+using JoesPieShopHRM.Services;
+using JoesPieShopHRM.State;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +18,12 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContextFactory<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Services section
+builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<IDataService, DataService>();
+
+builder.Services.AddScoped<ApplicationState>();
 
 var app = builder.Build();
 

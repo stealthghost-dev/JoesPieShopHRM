@@ -12,7 +12,7 @@ using System;
 
 using JoesPieShopHRM.Shared.Domain;
 
-namespace JoesPieShopHRM.Components.Services
+namespace JoesPieShopHRM.Services
 {
 
     public class MockDataService
